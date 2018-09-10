@@ -3,7 +3,7 @@
     <div class="content">
     	<div class="cartoption">
     	<div class="notFound">
-    		<h2>404<span>Not Found</span></h2>
+    		<h2 style="color: red;">404<span>Not Found</span></h2>
     	</div>	
     	</div>  	
        <div class="clear"></div>
