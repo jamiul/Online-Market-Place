@@ -1,12 +1,13 @@
 <?php include '../classes/AdminLogin.php';?>
 <?php 
-$al = new Adminlogin();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$adminUser = $_POST['adminUser'];
-	$adminPass = $_POST['adminPass'];
+	$al = new Adminlogin();
 
-	$loginchk = $al->adminLogin($adminUser,$adminPass);
-}
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$adminUser = $_POST['adminUser'];
+		$adminPass = $_POST['adminPass'];
+
+		$loginchk = $al->adminLogin($adminUser,$adminPass);
+	}
 
 ?>
 <!DOCTYPE html>
@@ -22,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<h1>Admin Login</h1>
 			<span style="color: red; font-size: 18px;">
 			<?php
-			if (isset($loginchk)) {
-				echo($loginchk);
-			}
+				if (isset($loginchk)) {
+					echo($loginchk);
+				}
 			?>
 				
 			</span>

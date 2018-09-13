@@ -39,5 +39,12 @@ class Cart
                 header("location:404.php");
         }
  	}
+ 	public function getCatProduct()
+ 	{
+ 		$sId = session_id();
+ 		$query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
+ 		$result = $this->db->select($query);
+ 		return $result;
+ 	}
 }
 ?>
