@@ -8,9 +8,7 @@
   }
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $quantity = $_POST['quantity'];
-
-    $addCart = $ct->cartAdd($quantity,$id);
+     $quantity = $_POST['quantity'];
 }
  ?>
 
@@ -39,6 +37,14 @@
 						<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
 					</form>				
 				</div>
+			<span style="color: red; font-size: 18px;" >
+				<?php 
+				   $addCart = $ct->cartAdd($quantity,$id);
+				    if (isset($addCart)) {
+				    	echo $addCart;
+				    }
+				?>
+			</span>
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>

@@ -1,9 +1,22 @@
 <?php include'inc/header.php';?>
+<?php
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+     $catId    = $_POST['catId'];
+     $quantity = $_POST['quantity'];
+
+     $updateCart = $ct->cartUpdateQty($catId,$quantity);
+} 
+?>
  <div class="main">
     <div class="content">
     	<div class="cartoption">		
 			<div class="cartpage">
 			    	<h2>Your Cart</h2>
+			    	<?php
+			    	    if (isset($updateCart)) {
+			    	     	echo $updateCart;
+			    	     } 
+			    	?>
 						<table class="tblone">
 							<tr>
 								<th width="5%">SL</th>
@@ -30,7 +43,8 @@
 								<td>$ <?php echo $result['price'];?></td>
 								<td>
 									<form action="" method="post">
-										<input type="number" name="" value="1"/>
+										<input type="hidden" name="catId" value="<?php echo $result['carId'];?>"/>
+										<input type="number" name="quantity" value="<?php echo $result['quantity'];?>"/>
 										<input type="submit" name="submit" value="Update"/>
 									</form>
 								</td>
