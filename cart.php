@@ -1,11 +1,27 @@
 <?php include'inc/header.php';?>
 <?php
+   if (isset($_GET['delpro'])) {
+    	$Delid = $id = $_GET['delpro'];
+
+    	$delProduct = $ct->ProDelbyCatId($Delid);
+    } 
+?>
+<?php
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $catId    = $_POST['catId'];
      $quantity = $_POST['quantity'];
 
+     if ($quantity <= 0) {
+
+     	$delProduct = $ct->ProDelbyCatId($catId);
+     }
      $updateCart = $ct->cartUpdateQty($catId,$quantity);
 } 
+?>
+<?php
+ if (!isset($_GET['id'])) {
+	echo "<meta http-equiv='refresh' content='0;URL=?id=live'/>";
+  }
 ?>
  <div class="main">
     <div class="content">
@@ -14,7 +30,10 @@
 			    	<h2>Your Cart</h2>
 			    	<?php
 			    	    if (isset($updateCart)) {
-			    	     	echo $updateCart;
+			    	     	header("location:cart.php");
+			    	     } 
+			    	     if (isset($delProduct)) {
+			    	     	echo $delProduct;
 			    	     } 
 			    	?>
 						<table class="tblone">
@@ -32,6 +51,7 @@
 								  $getpro = $ct->getCatProduct(); 
 								  if ($getpro) {
 								  		$i = 0;
+								  		$qty = 0;
 								  		$sum = 0;
 								  	while ($result = $getpro->fetch_assoc()) {
 								  	     $i++;
@@ -53,15 +73,22 @@
 								     $total = $result['price']*$result['quantity'];
 								     echo $total ;
 								 ?></td>
-								<td><a href="">X</a></td>
+								<td><a onclick="return confirm('Are You want Remove !!');" href="?delpro=<?php echo $result['carId'];?>">X</a></td>
 							</tr>
 							<?php 
+							    $qty = $qty + $result['quantity'];
 							    $sum = $sum + $total;
+							    Session::set("qty",$qty);
+							    Session::set("sum",$sum);
 							?>
 							
 							<?php } }?>
 							
 						</table>
+						<?php 
+						  $getData = $ct->ChkTableCart();
+						  if ($getData) {
+						?>
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
@@ -82,6 +109,9 @@
 								</td>
 							</tr>
 					   </table>
+					   <?php }else{
+					   	header("location:index.php");
+					   }?>
 					</div>
 					<div class="shopping">
 						<div class="shopleft">

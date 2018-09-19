@@ -68,5 +68,25 @@ class Cart
                   return $msg;
                 }
   }
+  public function ProDelbyCatId($Delid)
+  {
+    $Delid = mysqli_real_escape_string($this->db->link,$Delid);
+    $query = "DELETE FROM tbl_cart where carId = '$Delid'";
+    $delData = $this->db->delete($query);
+    if ($delData) {
+       echo "<script>window.location('cart.php'); </script>";
+       return $msg;
+    }else{
+      $msg = "<span class='error'> Product Not Deleted !!</span>";
+     return $msg;
+    }
+  }
+  public function ChkTableCart()
+  {
+    $sId = session_id();
+    $query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
+    $result = $this->db->select($query);
+    return $result;
+  }
 }
 ?>
