@@ -184,6 +184,38 @@ class Product
         $result = $this->db->select($query);
         return $result; 
   }
+  public function latestFromIphone()
+  {
+    $query = "SELECT * FROM tbl_product WHERE brandId = '7' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result; 
+  }
+  public function latestFromSamsung()
+  {
+    $query = "SELECT * FROM tbl_product WHERE brandId = '2' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result; 
+  }
+ public function latestFromCanon()
+  {
+    $query = "SELECT * FROM tbl_product WHERE brandId = '3' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result; 
+  }
+ public function latestFromAscer()
+  {
+    $query = "SELECT * FROM tbl_product WHERE brandId = '4' ORDER BY productId DESC LIMIT 1";
+        $result = $this->db->select($query);
+        return $result; 
+  }
+  public function ProductByCat($id)
+  {
+      $catId = mysqli_real_escape_string($this->db->link,$id);
+      $query = "SELECT * FROM tbl_product where carId = '$catId'";
+      $result = $this->db->select($query);
+      return $result;
+  }
+ 
  
 }
 ?>

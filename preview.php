@@ -1,5 +1,8 @@
 <?php include 'inc/header.php'; ?>
-
+<?php include 'classes/caregory.php';?>
+<?php 
+$cat = new Category();
+?>
  <?php
   if (!isset($_GET['proid']) || isset($_GET['proid']) == null) {
       echo "<script>window.location ='404.php'</script";
@@ -9,6 +12,7 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $quantity = $_POST['quantity'];
+     $addCart  = $ct->cartAdd($quantity,$id);
 }
  ?>
 
@@ -39,7 +43,6 @@
 				</div>
 			<span style="color: red; font-size: 18px;" >
 				<?php 
-				   $addCart = $ct->cartAdd($quantity,$id);
 				    if (isset($addCart)) {
 				    	echo $addCart;
 				    }
@@ -55,20 +58,14 @@
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
 					<ul>
-				      <li><a href="productbycat.php">Mobile Phones</a></li>
-				      <li><a href="productbycat.php">Desktop</a></li>
-				      <li><a href="productbycat.php">Laptop</a></li>
-				      <li><a href="productbycat.php">Accessories</a></li>
-				      <li><a href="productbycat.php#">Software</a></li>
-					   <li><a href="productbycat.php">Sports & Fitness</a></li>
-					   <li><a href="productbycat.php">Footwear</a></li>
-					   <li><a href="productbycat.php">Jewellery</a></li>
-					   <li><a href="productbycat.php">Clothing</a></li>
-					   <li><a href="productbycat.php">Home Decor & Kitchen</a></li>
-					   <li><a href="productbycat.php">Beauty & Healthcare</a></li>
-					   <li><a href="productbycat.php">Toys, Kids & Babies</a></li>
-    				</ul>
-    	
+					<?php 
+					      $getCat = $cat->getAllcat();
+						    if ($getCat) {
+						    	while ($result = $getCat->fetch_assoc()) {
+					?>
+				      <li><a href="productbycat.php?catId=<?php echo $result['carId'];?>"><?php echo $result['catName'];?></a></li>
+				      <?php  } }?>
+					</ul>
  				</div>
  		</div>
  	</div>

@@ -9,11 +9,10 @@
    	include_once "classes/".$class.".php";
    		
    });
-
-   	$db = new Database();
- 	$fm = new Format();
- 	$pd = new Product();
- 	$ct = new Cart();
+   	$db  = new Database();
+ 	$fm  = new Format();
+ 	$pd  = new Product();
+ 	$ct  = new Cart();
 ?>
 <?php
   header("Cache-Control: no-cache, must-revalidate");
