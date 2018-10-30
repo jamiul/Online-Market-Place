@@ -20,6 +20,9 @@ if ($login == False) {
     				while ($result = $getData->fetch_assoc()) {
     		?>
 			<table class="tblone">
+			    <tr>
+					<td colspan="3"><h2 style="text-align: center;">Your Profile Details</h2></td>
+				</tr>
 				<tr>
 					<td width="20%">Name</td>
 					<td width="5%">:</td>
@@ -38,7 +41,7 @@ if ($login == False) {
 				<tr>
 					<td>Country</td>
 					<td>:</td>
-					<td><?php echo $result['county'];?></td>
+					<td><?php echo $result['country'];?></td>
 				</tr>
 				<tr>
 					<td>Zip</td>
@@ -55,7 +58,11 @@ if ($login == False) {
 					<td>:</td>
 					<td><?php echo $result['email'];?></td>
 				</tr>
-				
+				<tr>
+					<td></td>
+					<td></td>
+					<td><a href="editProfile.php">Update Profile</a></td>
+				</tr>
 			</table>
 			<?php } }?>
  		</div>

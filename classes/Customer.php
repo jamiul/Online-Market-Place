@@ -77,6 +77,41 @@ class Customer
 	    $query = "SELECT * FROM tbl_customer WHERE Id = '$id'";
 	    $result = $this->db->select($query);
 	    return $result;
- 	}
+	 }
+	 public function CustomeUpdate($data,$cmrId)
+	 {
+		$name    = mysqli_real_escape_string($this->db->link,$data['name']);
+ 		$city    = mysqli_real_escape_string($this->db->link,$data['city']);
+ 		$zip     = mysqli_real_escape_string($this->db->link,$data['zip']);
+ 		$email   = mysqli_real_escape_string($this->db->link,$data['email']);
+ 		$address = mysqli_real_escape_string($this->db->link,$data['address']);
+ 		$country = mysqli_real_escape_string($this->db->link,$data['country']);
+ 		$phone   = mysqli_real_escape_string($this->db->link,$data['phone']);
+
+     if ($name == "" || $city == "" || $zip == "" || $email == ""|| $address == ""|| $country =="" || $phone == "" ){
+ 			$msg = "<span class='error'> Field must not be empty !!</span>";
+ 			return $msg;
+ 		
+ 		}else{
+			  $query = "UPDATE tbl_customer
+ 			           SET 
+					   name    = '$name',
+					   address = '$address',
+					   city    = '$city',
+					   country = '$country',
+					   zip     = '$zip',
+					   phone   = '$phone',
+					   email   = '$email'
+ 			          WHERE id = '$cmrId' ";
+ 			          $updated_row = $this->db->update($query);
+ 			          if ($updated_row) {
+ 			          	$msg = "<span class='success'> Profile Updated successfully !!</span>";
+ 			          	return $msg;
+ 			          }else {
+ 			          	$msg = "<span class='error'> Profile Not Updated !!</span>";
+ 			          	return $msg;
+ 			          }
+    } 
+	 }
 }
 ?>
