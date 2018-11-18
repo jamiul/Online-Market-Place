@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Oct 18, 2018 at 05:47 PM
--- Server version: 5.7.23-0ubuntu0.16.04.1
--- PHP Version: 7.0.32-0ubuntu0.16.04.1
+-- Host: 127.0.0.1
+-- Generation Time: Nov 13, 2018 at 05:31 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -83,6 +83,18 @@ CREATE TABLE `tbl_cart` (
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`carId`, `sId`, `productId`, `productName`, `price`, `quantity`, `image`) VALUES
+(1, 'jhen1f37lmaqkh5pcj3okhic97', 5, 'LATEST FROM Software', 230.00, 3, 'upload/f87c2add98.jpg'),
+(2, 'p2gbild5fjj8627q85bahdtab9', 6, 'LATEST FROM IPHONE', 890.00, 1, 'upload/74c2a43316.jpg'),
+(3, 'ev2j22qtdrm6nbp02du06b8lql', 6, 'LATEST FROM IPHONE', 890.00, 5, 'upload/74c2a43316.jpg'),
+(4, 'ev2j22qtdrm6nbp02du06b8lql', 5, 'LATEST FROM Software', 230.00, 1, 'upload/f87c2add98.jpg'),
+(5, '3otou6adg3no0muc01uhed4c7q', 5, 'LATEST FROM Software', 230.00, 1, 'upload/f87c2add98.jpg'),
+(6, '3otou6adg3no0muc01uhed4c7q', 2, 'LATEST FROM IPHONE', 239.00, 1, 'upload/920a833270.jpg');
+
 -- --------------------------------------------------------
 
 --
@@ -135,7 +147,7 @@ CREATE TABLE `tbl_customer` (
 --
 
 INSERT INTO `tbl_customer` (`id`, `name`, `address`, `city`, `country`, `zip`, `phone`, `email`, `pass`) VALUES
-(1, 'Shaheed Nasim', 'Banasree', 'Dhaka', 'Bangladesh', '1212', '01755acangdd', 'nasim@gmailc.om', '123'),
+(1, 'Monsur Hallash', 'Mohammadpur', 'Dhaka', 'Bangladesh', '1236', '01755464737', 'mansur@gmail.com', '123'),
 (2, 'Abu Yousuf', 'Mirpur', 'Dhaka', 'Bangladesh', '1000', '0167543883', 'abu@gmail.com', '123');
 
 -- --------------------------------------------------------
@@ -227,7 +239,7 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT for table `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `carId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `carId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_category`

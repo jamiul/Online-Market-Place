@@ -6,7 +6,7 @@ if ($login == False) {
  	header("Location:login.php");
  } 
 ?>
-<style type="text/css">
+<style>
 	.tblone{width: 500px; margin: 0 auto; border: 2px solid #ddd;}
 	.tblone tr td{text-align: justify;}
 </style>
